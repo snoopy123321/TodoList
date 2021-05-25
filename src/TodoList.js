@@ -1,4 +1,5 @@
-import React,{Fragment,useState}from 'react'
+import React,{Fragment,useState, useEffect}from 'react'
+import axios from 'axios'
 import TodoItem from './TodoItem'
 import './style.css'
 
@@ -31,7 +32,14 @@ function TodoList(){
       )
     })
   }
-
+  useEffect(() => {
+    axios.get('http://localhost.charlesproxy.com:3000/api/todolist')
+      .then((res) => {
+        console.log(res.data)
+        setList(res.data)
+      })
+      .catch(() => {alert('error')})
+  },[])
   return (
       <Fragment>
         <label htmlFor='insert area'>输入内容：</label>
@@ -46,6 +54,7 @@ function TodoList(){
         </ul>
       </Fragment>
   )
+
 
 }
 
