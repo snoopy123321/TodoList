@@ -7,7 +7,7 @@ import {getAddItemAction, getDeleteItemAction, getInputChangeAction} from "./sto
 
 function TodoList (){
   const [state, setState] = useState(store.getState())
-
+// test git
   store.subscribe(handleStoreChange)
 
   function handleInputChange(e){
